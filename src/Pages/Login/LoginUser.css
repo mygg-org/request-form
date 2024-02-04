@@ -1,0 +1,19 @@
+.LoginContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.InputLogin {
+    padding: 16.5px 14px;
+    font-size: 15px;
+    border: 1px solid rgb(204, 202, 202);
+    border-radius: 6px;
+    margin: 0.5rem 0;
+    max-width: 27rem;
+    background-color: white;
+}
+.LastPassword{
+    text-align: end;
+    padding: 0 0.2rem;
+    padding-bottom: 1.3rem;
+}

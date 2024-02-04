@@ -1,0 +1,17 @@
+.containerRegister{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.RegisterInput{
+    padding: 16.5px 5px;
+    font-size: 15px;
+    border: 1px solid rgb(204, 202, 202);
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    width: 100%;
+    background-color: white;
+    gap: 0;
+}
