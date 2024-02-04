@@ -1,16 +1,19 @@
 import { Link } from 'react-router-dom'
-import LoginUser from './LoginUser'
-import Submit from './Submit.jsx'
+import RegisterPage from '../Register/RegisterPage.jsx'
+import '../Login/LoginPage.css'
 
 function LoginPage() {
-
   return (
     <div className="container">
       <h1 className='TitleForm'>Faça o Seu Login</h1>
-      <form action="GET">
-        <LoginUser />
-        <Submit />
-        <p>Não tem uma conta?  <Link to="/register"><a href="#">Cadastre-se agora</a></Link></p>
+      <form>
+        <input className="InputLogin" id='UserName' name='name' type="text" placeholder='Nome de Usuário* / E-mail*' required />
+        <input className="InputLogin" id='Password' name='password' type="password" placeholder='Senha*' required />
+        <div className="LastPassword">
+          <Link to="#">Esqueceu a senha?</Link>
+        </div>
+        <input type="submit"  className='LoginButton' value="Entrar"/>
+        <p>Não tem uma conta?<Link to="/register"> Cadastre-se agora</Link></p>
       </form>
     </div>
   )

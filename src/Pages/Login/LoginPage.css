@@ -17,3 +17,21 @@
     padding: 0 0.2rem;
     padding-bottom: 1.3rem;
 }
+
+.LoginButton {
+    border: 1px solid rgb(204, 202, 202);
+    width: 100%;
+    border-radius: 8px;
+    padding: 16.5px 14px;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    color: black;
+    background-color: white;
+    cursor: pointer;
+    transition: border-color 0.25s;
+
+}
+.LoginButton:hover{
+    border-color: #646cff;
+}
