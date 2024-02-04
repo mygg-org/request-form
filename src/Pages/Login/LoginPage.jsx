@@ -7,11 +7,8 @@ function LoginPage() {
     <div className="container">
       <h1 className='TitleForm'>Faça o Seu Login</h1>
       <form>
-        <input className="InputLogin" id='UserName' name='name' type="text" placeholder='Nome de Usuário* / E-mail*' required />
-        <input className="InputLogin" id='Password' name='password' type="password" placeholder='Senha*' required />
-        <div className="LastPassword">
-          <Link to="#">Esqueceu a senha?</Link>
-        </div>
+        <input className="InputLogin" id='UserName'  type="text" placeholder='Nome de Usuário* / E-mail*' required />
+        <input className="InputLogin" id='Password'  type="password" placeholder='Senha*' required />
         <input type="submit"  className='LoginButton' value="Entrar"/>
         <p>Não tem uma conta?<Link to="/register"> Cadastre-se agora</Link></p>
       </form>

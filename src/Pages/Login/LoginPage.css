@@ -12,15 +12,11 @@
     max-width: 27rem;
     background-color: white;
 }
-.LastPassword{
-    text-align: end;
-    padding: 0 0.2rem;
-    padding-bottom: 1.3rem;
-}
 
 .LoginButton {
     border: 1px solid rgb(204, 202, 202);
     width: 100%;
+    margin-top: 2rem;
     border-radius: 8px;
     padding: 16.5px 14px;
     font-size: 1em;
