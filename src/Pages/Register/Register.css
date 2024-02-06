@@ -3,6 +3,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    width: 100%;
 }
 
 .RegisterInput{
@@ -10,8 +11,10 @@
     font-size: 15px;
     border: 1px solid rgb(204, 202, 202);
     border-radius: 6px;
-    margin-bottom: 1rem;
-    width: 100%;
+    width: 96.5%;
     background-color: white;
-    gap: 0;
+}
+.InputRegister{
+    width: 100%;
+    margin-bottom: 1rem;
 }
