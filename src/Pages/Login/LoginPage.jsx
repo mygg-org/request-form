@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom'
 import '../Login/LoginPage.css'
 import usePasswordTogle from '../../components/usePasswordTogle.jsx'
+import Header from '../../components/header.jsx';
 
 function LoginPage() {
   const [PasswordInputType, ToggleIcon] = usePasswordTogle();
+  
 
   const HandleSubmit = (e) => {
     e.preventDefault();
@@ -11,7 +13,7 @@ function LoginPage() {
 
   return (
     <div className="container">
-      <h1 className='TitleForm'>Faça o Seu Login</h1>
+      <Header />
       <form onSubmit={HandleSubmit}>
         <div className="InputRegister">
           <input
@@ -40,7 +42,6 @@ function LoginPage() {
           value="Entrar"
         />
 
-        <p>Não tem uma conta?<Link to="/register"> Cadastre-se agora</Link></p>
       </form>
     </div>
   )
