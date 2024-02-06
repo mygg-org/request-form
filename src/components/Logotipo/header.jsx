@@ -1,6 +1,6 @@
 import React from 'react';
-import logo from '../components/public/img/logo-semeec.webp'; 
-import "../components/Header.css"
+import logo from '../public/img/logo-semeec.webp'; 
+import "../Logotipo/Header.css"
 
 console.log(logo); 
 

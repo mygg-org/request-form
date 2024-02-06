@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import '../Login/LoginPage.css'
 import usePasswordTogle from '../../components/usePasswordTogle.jsx'
-import Header from '../../components/header.jsx';
+import Header from '../../components/Logotipo/header.jsx';
 
 function LoginPage() {
   const [PasswordInputType, ToggleIcon] = usePasswordTogle();
@@ -13,8 +13,8 @@ function LoginPage() {
 
   return (
     <div className="container">
-      <Header />
       <form onSubmit={HandleSubmit}>
+      <Header />
         <div className="InputRegister">
           <input
             className="InputLogin"
