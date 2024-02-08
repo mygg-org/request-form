@@ -39,11 +39,13 @@ const DataTablePage = () => {
     ]
 
   const [records, setRecords] = useState(data);
-  function handleFilter(event) {
+  function handleFilter(e) {
     const newData = data.filter(row => {
-      return row.name.toLowerCase().includes(event.target.value.toLowerCase())
+      return row.name.toLowerCase().includes(e.toLowerCase())
     })
     setRecords(newData)
+    console.log(e.target.value)
+
   }
 
   return (
