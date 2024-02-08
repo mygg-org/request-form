@@ -5,7 +5,7 @@ import LoginPage from './Pages/Login/LoginPage.jsx'
 function App() {
 
   return (
-    <div className="container">
+    <div>
       <LoginPage/>
     </div>
   )

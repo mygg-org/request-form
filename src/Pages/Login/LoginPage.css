@@ -1,6 +1,10 @@
 .LoginContainer {
+    width: 100vw;
+    height: 100vh;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .InputLogin {
@@ -8,7 +12,7 @@
     font-size: 15px;
     border: 1px solid rgb(204, 202, 202);
     border-radius: 6px;
-    width: 96.3%;
+    width: 100%;
     background-color: white;
 }
 

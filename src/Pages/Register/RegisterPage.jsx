@@ -12,7 +12,7 @@ const RegisterPage = () => {
   }
 
   return (
-    <div>
+    <div  className='LoginContainer'>
       <h1>Realize Seu Cadastro!</h1>
       <form onSubmit={HandleSubmit}>
         <div className="containerRegister">

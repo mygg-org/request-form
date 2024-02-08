@@ -12,7 +12,7 @@ function LoginPage() {
   }
 
   return (
-    <div className="container">
+    <div className="LoginContainer">
       <form onSubmit={HandleSubmit}>
         <Header />
         <div className="InputRegister">

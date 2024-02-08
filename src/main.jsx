@@ -8,7 +8,7 @@ import { createBrowserRouter, RouterProvider, Route } from "react-router-dom"
 import ErrorPage from './Pages/Error/ErrorPage.jsx'
 //Pagina de Registro
 import RegiterPage from './Pages/Register/RegisterPage.jsx'
-
+import DataTablePage from './Pages/DataTable/DataTablePage.jsx'
 
 const router = createBrowserRouter([
   {
@@ -19,6 +19,10 @@ const router = createBrowserRouter([
   {
     path: "register",
     element: <RegiterPage/>
+  },
+  {
+    path: "data",
+    element: <DataTablePage/>
   }
 ])
 
