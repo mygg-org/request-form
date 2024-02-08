@@ -1,0 +1,11 @@
+.sidebar .nav {
+    padding: 0 !important;
+
+}
+
+.sidebar ul li a:hover {
+    background-color: blue;
+}
+.icone-boot:hover{
+    color: blue;
+}
