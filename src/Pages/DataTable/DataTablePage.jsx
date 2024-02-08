@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "../DataTable/DataTable.css"
 import 'bootstrap/dist/css/bootstrap.min.css'
 import DataTable from 'react-data-table-component'
@@ -16,37 +16,43 @@ const DataTablePage = () => {
       status: "Status",
       selector: row => row.status,
       sortable: true
+    },
+    {
+      name: "Status",
+      cell: row => <select name="status" id="" class="form-select">
+                        <option value="select">Todas</option>
+                        <option value="aprovado">Aprovado</option>
+                        <option value="negado">Negado</option>
+                  </select>
+    },
+    {
+      name:"Editar",
+      cell: row => <button className='btn btn-primary' onClick={() => alert(row.id)}>Editar</button>
     }
   ]
-  const data =
-    [
-      {
-        id: 1,
-        name: "Helysson Cavalcante",
-      },
-      {
-        id: 2,
-        name: "Mabyle Jeandressa",
-      },
-      {
-        id: 3,
-        name: "João Victor Almeida",
-      },
-      {
-        id: 4,
-        name: "Jose Silva Souza",
-      }
-    ]
+  const data = [
+    {
+      id: 1,
+      name: "Helysson Cavalcante",
+    },
+    {
+      id: 2,
+      name: "Mabyle Jeandressa",
+    },
+    {
+      id: 3,
+      name: "João Victor Almeida",
+    },
+    {
+      id: 4,
+      name: "Jose Silva Souza",
+    }
+  ]
 
-  const [records, setRecords] = useState(data);
-  function handleFilter(e) {
-    const newData = data.filter(row => {
-      return row.name.toLowerCase().includes(e.toLowerCase())
-    })
-    setRecords(newData)
-    console.log(e.target.value)
+  const [search, setSearch] = useState("")
+  useEffect(()=> {
 
-  }
+  }, [search])
 
   return (
     <div className="d-flex">
@@ -54,14 +60,21 @@ const DataTablePage = () => {
         <SideBar />
       </div>
       <div className='ContainerDataTable'>
-        <div className="text-end mt-2"><input type="text" onChange={handleFilter}/></div>
         <DataTable
+          title="Lista de Pessoas"
           columns={columns}
           data={data}
           selectableRows
+          selectableRowsHighlight
+          highlightOnHover
           fixedHeader
           pagination
-        ></DataTable>
+          /* actions={<button className='btn btn-info'>Export</button>} */
+          subHeader
+          subHeaderComponent={<input type='text' placeholder='Pesquise' className='w-25 form-control'/>}
+          value={search}
+          onChange={() => setSearch(e.target.value)}
+        />
       </div>
     </div>
   )
