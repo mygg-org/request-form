@@ -5,7 +5,7 @@ import Header from '../../components/Logotipo/header.jsx';
 
 function LoginPage() {
   const [PasswordInputType, ToggleIcon] = usePasswordTogle();
-  
+
 
   const HandleSubmit = (e) => {
     e.preventDefault();
@@ -14,7 +14,7 @@ function LoginPage() {
   return (
     <div className="container">
       <form onSubmit={HandleSubmit}>
-      <Header />
+        <Header />
         <div className="InputRegister">
           <input
             className="InputLogin"
