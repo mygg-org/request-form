@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import "../DataTable/DataTable.css"
 import 'bootstrap/dist/css/bootstrap.min.css'
 import DataTable from 'react-data-table-component'
@@ -13,20 +13,15 @@ const DataTablePage = () => {
       sortable: true
     },
     {
-      status: "Status",
-      selector: row => row.status,
-      sortable: true
-    },
-    {
       name: "Status",
       cell: row => <select name="status" id="" class="form-select">
-                        <option value="select">Todas</option>
-                        <option value="aprovado">Aprovado</option>
-                        <option value="negado">Negado</option>
-                  </select>
+        <option value="select">Todas</option>
+        <option value="aprovado">Aprovado</option>
+        <option value="negado">Negado</option>
+      </select>
     },
     {
-      name:"Editar",
+      name: "Editar",
       cell: row => <button className='btn btn-primary' onClick={() => alert(row.id)}>Editar</button>
     }
   ]
@@ -48,8 +43,14 @@ const DataTablePage = () => {
       name: "Jose Silva Souza",
     }
   ]
+  const [records, setRecords] = useState(data);
 
-
+  function handleFilter(e) {
+    const newData = data.filter(row => {
+      return row.name.toLowerCase().includes(e.target.value.toLowerCase())
+    })
+    setRecords(newData)
+  }
 
   return (
     <div className="d-flex">
@@ -68,7 +69,7 @@ const DataTablePage = () => {
           pagination
           /* actions={<button className='btn btn-info'>Export</button>} */
           subHeader
-          subHeaderComponent={<input type='text' placeholder='Pesquise' className='w-25 form-control'/>}
+          subHeaderComponent={<input type='text' placeholder='Pesquise' className='w-25 form-control' />}
         />
       </div>
     </div>
