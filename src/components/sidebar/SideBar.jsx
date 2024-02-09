@@ -21,7 +21,7 @@ const SideBar = () => {
           <li className='nav-item p-1'>
             <a href="" className='nav-link text-white'>
               <i className='bi bi-table me-2'></i>
-              <span className='fs-5'>Mabyle</span>
+              <span className='fs-5'>Span</span>
             </a>
           </li>
           <li className='nav-item p-1'>
@@ -30,18 +30,12 @@ const SideBar = () => {
               <span className='fs-5'>Order</span>
             </a>
           </li>
-          <li className='nav-item p-1'>
-            <a href="" className='nav-link text-white'>
-              <i className='bi bi-speedometer me-2'></i>
-              <span className='fs-5'>Dashboard</span>
-            </a>
-          </li>
         </ul>
       </div>
       <div>
         <hr className='text-secondary' />
         <i className='bi bi-person fs-5'></i>
-        <span>Helysson</span>
+        <span> Helysson</span>
       </div>
     </div>
     )

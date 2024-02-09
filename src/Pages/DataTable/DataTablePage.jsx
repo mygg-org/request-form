@@ -3,6 +3,7 @@ import "../DataTable/DataTable.css"
 import 'bootstrap/dist/css/bootstrap.min.css'
 import DataTable from 'react-data-table-component'
 import SideBar from '../../components/sidebar/SideBar.jsx'
+import Modal from '../../components/Modal/Modal.jsx'
 
 const DataTablePage = () => {
 
@@ -14,7 +15,7 @@ const DataTablePage = () => {
     },
     {
       name: "Status",
-      cell: row => <select name="status" id="" class="form-select">
+      cell: row => <select name="status" id="" class="form-select w-50">
         <option value="select">Todas</option>
         <option value="aprovado">Aprovado</option>
         <option value="negado">Negado</option>
@@ -22,7 +23,7 @@ const DataTablePage = () => {
     },
     {
       name: "Editar",
-      cell: row => <button className='btn btn-primary' onClick={() => alert(row.id)}>Editar</button>
+      cell: row =>  <Modal/>
     }
   ]
   const data = [
@@ -61,7 +62,7 @@ const DataTablePage = () => {
         <DataTable
           title="Lista de Pessoas"
           columns={columns}
-          data={data}
+          data={records}
           selectableRows
           selectableRowsHighlight
           highlightOnHover
@@ -69,7 +70,7 @@ const DataTablePage = () => {
           pagination
           /* actions={<button className='btn btn-info'>Export</button>} */
           subHeader
-          subHeaderComponent={<input type='text' placeholder='Pesquise' className='w-25 form-control' />}
+          subHeaderComponent={<input type='text' placeholder='Pesquise' className='w-25 form-control' onChange={handleFilter}/>}
         />
       </div>
     </div>
