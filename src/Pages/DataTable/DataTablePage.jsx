@@ -49,10 +49,7 @@ const DataTablePage = () => {
     }
   ]
 
-  const [search, setSearch] = useState("")
-  useEffect(()=> {
 
-  }, [search])
 
   return (
     <div className="d-flex">
@@ -72,8 +69,6 @@ const DataTablePage = () => {
           /* actions={<button className='btn btn-info'>Export</button>} */
           subHeader
           subHeaderComponent={<input type='text' placeholder='Pesquise' className='w-25 form-control'/>}
-          value={search}
-          onChange={() => setSearch(e.target.value)}
         />
       </div>
     </div>
