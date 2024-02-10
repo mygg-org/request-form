@@ -9,47 +9,62 @@ const DataTablePage = () => {
 
   const columns = [
     {
+      name: 'Id',
+      selector: row => row.id,
+      sortable: true
+    },
+    {
       name: 'Nome',
       selector: row => row.name,
       sortable: true
     },
     {
+      name: 'CPF',
+      selector: row => row.cpf,
+    },
+    {
       name: "Status",
       cell: row => <select name="status" id="" class="form-select w-50">
         <option value="select">Todas</option>
-        <option value="aprovado">Aprovado</option>
+        <option value="aprovado" >Aprovado</option>
         <option value="negado">Negado</option>
       </select>
     },
     {
       name: "Editar",
-      cell: row =>  <Modal/>
+      cell: row => <Modal />
     }
+
   ]
   const data = [
     {
       id: 1,
       name: "Helysson Cavalcante",
+      cpf: "05265540296"
     },
     {
       id: 2,
       name: "Mabyle Jeandressa",
+      cpf: "00000000002"
     },
     {
       id: 3,
       name: "João Victor Almeida",
+      cpf: "00000000003"
     },
     {
       id: 4,
       name: "Jose Silva Souza",
+      cpf: "00000000004"
     }
   ]
   const [records, setRecords] = useState(data);
 
-  function handleFilter(e) {
+  function handleFilterName(e) {
     const newData = data.filter(row => {
-      return row.name.toLowerCase().includes(e.target.value.toLowerCase())
+      return row.name.toLowerCase().includes(e.target.value.toLowerCase());
     })
+
     setRecords(newData)
   }
 
@@ -59,18 +74,17 @@ const DataTablePage = () => {
         <SideBar />
       </div>
       <div className='ContainerDataTable'>
+        <h1 className='text-center'>Lista de Pessoas</h1>
         <DataTable
-          title="Lista de Pessoas"
           columns={columns}
           data={records}
-          selectableRows
           selectableRowsHighlight
           highlightOnHover
           fixedHeader
           pagination
-          /* actions={<button className='btn btn-info'>Export</button>} */
           subHeader
-          subHeaderComponent={<input type='text' placeholder='Pesquise' className='w-25 form-control' onChange={handleFilter}/>}
+          actions={<button className='btn btn-success'>Add+</button>}
+          subHeaderComponent={<input type='text' placeholder='Pesquise' className='w-25 form-control' />}
         />
       </div>
     </div>
