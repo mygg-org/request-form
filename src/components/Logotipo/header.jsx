@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../../../public/img/logo-semeec.webp'; 
+import logo from '../../../public/logo-semeec.webp'; 
 import "../Logotipo/Header.css"
 
 console.log(logo); 
