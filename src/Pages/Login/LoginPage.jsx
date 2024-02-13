@@ -1,11 +1,31 @@
-import { Link } from 'react-router-dom'
+import { useState } from 'react';
+import { Navigate } from 'react-router-dom';
 import '../Login/LoginPage.css'
 import usePasswordTogle from '../../components/usePasswordTogle.jsx'
 import Header from '../../components/Logotipo/header.jsx';
 
 function LoginPage() {
   const [PasswordInputType, ToggleIcon] = usePasswordTogle();
+  const [username, setUserName] = useState('');
+  const [password, setPassword] = useState('');
+  const [loggedIn, setLoggedIn] = useState(false);
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    // Aqui você faria a requisição para o backend para autenticar o usuário
+    // Por simplicidade, vamos apenas verificar se o email e senha são válidos
+    if (username === 'admin' && password === 'admin') {
+      // Simulando o armazenamento do token de autenticação
+      setLoggedIn(true);
+    } else {
+      alert('Credenciais inválidas')
+    }
+  }
+
+  if (loggedIn) {
+    return <Navigate to="/data"/>;
+  }
 
   const HandleSubmit = (e) => {
     e.preventDefault();
@@ -13,14 +33,16 @@ function LoginPage() {
 
   return (
     <div className="LoginContainer">
-      <form onSubmit={HandleSubmit}>
+      <form onSubmit={handleSubmit}>
         <Header />
         <div className="InputRegister">
           <input
             className="InputLogin"
             id='UserName'
             type="text"
-            placeholder='Nome de Usuário* / E-mail*'
+            value={username}
+            placeholder='Nome de Usuário*'
+            onChange={(e) => setUserName(e.target.value)}
             required
           />
         </div>
@@ -29,7 +51,9 @@ function LoginPage() {
             <input
               className="InputLogin"
               id='Password'
+              value={password}
               type={PasswordInputType}
+              onChange={(e) => setPassword(e.target.value)}
               placeholder='Senha*'
               required
             />

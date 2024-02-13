@@ -6,6 +6,28 @@ import SideBar from '../../components/sidebar/SideBar.jsx'
 import Modal from '../../components/Modal/Modal.jsx'
 
 const DataTablePage = () => {
+  const [selectedOptions, setSelectedOptions] = useState({});
+
+  const handleSelectChange = (id, value) => {
+    setSelectedOptions({
+      ...selectedOptions,
+      [id]: value
+    });
+  };
+
+  const getSelectClass = (id) => {
+    const selectedOption = selectedOptions[id];
+    if (selectedOption === 'aprovado') {
+      return 'bg-success text-white';
+    } else if (selectedOption === 'negado') {
+      return 'bg-danger text-white'; 
+    } else if (selectedOption === 'select') {
+      return 'bg-white';
+    } 
+    else {
+      return '';
+    }
+  };
 
   const columns = [
     {
@@ -24,8 +46,11 @@ const DataTablePage = () => {
     },
     {
       name: "Status",
-      cell: row => <select name="status" id="" class="form-select w-50">
-        <option value="select">Todas</option>
+      cell: row => <select name="status" id="" class="form-select"
+        className={`form-select ${getSelectClass(row.id)}`}
+        value={selectedOptions[row.id] || ''}
+        onChange={(e) => handleSelectChange(row.id, e.target.value)}>
+        <option value="select">Selecione...</option>
         <option value="aprovado" >Aprovado</option>
         <option value="negado">Negado</option>
       </select>
@@ -84,7 +109,7 @@ const DataTablePage = () => {
           pagination
           subHeader
           actions={<button className='btn btn-success'>Add+</button>}
-          subHeaderComponent={<input type='text' placeholder='Pesquise' className='w-25 form-control' />}
+          subHeaderComponent={<input type='text' placeholder='Pesquise' className='w-25 form-control' onChange={handleFilterName}/>}
         />
       </div>
     </div>

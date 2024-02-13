@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 //Configuração de rotas
-import { createBrowserRouter, RouterProvider, Route } from "react-router-dom"
+import { createBrowserRouter, RouterProvider, Route, Navigate } from "react-router-dom"
 //Pagina de Erro
 import ErrorPage from './Pages/Error/ErrorPage.jsx'
 //Pagina de Registro

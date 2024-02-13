@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 
 function Example() {
@@ -24,14 +25,32 @@ function Example() {
           <Modal.Title>Atualizar dados</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          I will not close if you click outside me. Do not even try to press
-          escape key.
+        <Form>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>Nome Completo</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Digite o Nome Completo*"
+                autoFocus
+                required
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>CPF</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Digite o Novo CPF*"
+                autoFocus
+                required
+              />
+            </Form.Group>
+          </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Fechar
           </Button>
-          <Button variant="primary">Atualizar</Button>
+          <Button variant="primary" type='submit'>Atualizar</Button>
         </Modal.Footer>
       </Modal>
     </>
