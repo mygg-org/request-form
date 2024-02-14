@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Sidebar.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 import { Button } from 'react-bootstrap';
 
 const Sidebar = () => {
@@ -13,7 +14,7 @@ const Sidebar = () => {
     <div className="d-flex">
       <div className={`sidebar ${isOpen ? 'open' : ''}`}>
         <Button variant="dark" className="toggle-btn" onClick={toggleSidebar}>
-          {isOpen ? 'Fechar' : 'Abrir'}
+          {isOpen ? 'Fechar Menu' : 'Abrir Menu'}
         </Button>
         <div className="sidebar-content">
           <ul className="list-group">
@@ -21,7 +22,9 @@ const Sidebar = () => {
             <li className="list-group-item">Pessoas</li>
           </ul>
           <div className="sidebar-footer">
-            <p>Sidebar Footer</p>
+            <hr className='text-secondary' />
+            <i className='bi bi-person fs-5'></i>
+            <span> Helysson</span>
           </div>
         </div>
       </div>
