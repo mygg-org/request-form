@@ -1,34 +1,33 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Navigate } from 'react-router-dom';
-import '../Login/LoginPage.css'
-import usePasswordTogle from '../../components/usePasswordTogle.jsx'
+import '../Login/LoginPage.css';
 import Header from '../../components/Logotipo/header.jsx';
 
 function LoginPage() {
-  const [PasswordInputType, ToggleIcon] = usePasswordTogle();
   const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const [loggedIn, setLoggedIn] = useState(false);
+  const [showPassword, setShowPassword] = useState(false); // Novo estado para controlar a exibição da senha
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     // Aqui você faria a requisição para o backend para autenticar o usuário
     // Por simplicidade, vamos apenas verificar se o email e senha são válidos
     if (username === 'admin' && password === 'admin') {
       // Simulando o armazenamento do token de autenticação
       setLoggedIn(true);
     } else {
-      alert('Credenciais inválidas')
+      alert('Credenciais inválidas');
     }
-  }
+  };
+
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
 
   if (loggedIn) {
-    return <Navigate to="/data"/>;
-  }
-
-  const HandleSubmit = (e) => {
-    e.preventDefault();
+    return <Navigate to="/data" />;
   }
 
   return (
@@ -52,12 +51,19 @@ function LoginPage() {
               className="InputLogin"
               id='Password'
               value={password}
-              type={PasswordInputType}
+              type={showPassword ? 'text' : 'password'} // Altera o tipo do input com base no estado showPassword
               onChange={(e) => setPassword(e.target.value)}
               placeholder='Senha*'
               required
             />
-            <span className="password-toogle-icon">{ToggleIcon}</span>
+            <div className="hidePassword">
+              <input
+                type="checkbox"
+                onChange={toggleShowPassword}
+                checked={showPassword}
+              />
+              <p>Mostrar Senha</p>
+            </div>
           </div>
         </div>
         <input
@@ -68,7 +74,7 @@ function LoginPage() {
 
       </form>
     </div>
-  )
+  );
 }
 
-export default LoginPage
+export default LoginPage;

@@ -5,8 +5,6 @@ import './index.css'
 import { createBrowserRouter, RouterProvider, Route, Navigate } from "react-router-dom"
 //Pagina de Erro
 import ErrorPage from './Pages/Error/ErrorPage.jsx'
-//Pagina de Registro
-import RegiterPage from './Pages/Register/RegisterPage.jsx'
 import DataTablePage from './Pages/DataTable/DataTablePage.jsx'
 import LoginPage from './Pages/Login/LoginPage.jsx'
 
@@ -15,10 +13,6 @@ const router = createBrowserRouter([
     path: "/",
     element: <LoginPage/> ,
     errorElement: <ErrorPage/>
-  },
-  {
-    path: "register",
-    element: <RegiterPage/>
   },
   {
     path: "data",
