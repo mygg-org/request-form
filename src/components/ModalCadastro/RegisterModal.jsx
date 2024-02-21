@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
@@ -7,10 +8,10 @@ function ResgiterModal() {
     const [show, setShow] = useState(false);
     const [nomeCompleto, setNomeCompleto] = useState('');
     const [cpf, setCpf] = useState('');
-    const [endereco, setEndereco] = useState('');
-    const [numendereco, setNumEndereco] = useState('');
+    const [endereco, setEndereco] = useState(null);
     const [cep, setCep] = useState('');
 
+    const [erro, setErro] = useState(null);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
@@ -24,6 +25,42 @@ function ResgiterModal() {
         // Fechar o modal após atualizar
         handleClose();
     };
+
+    //Busca CEP
+    const handleCepChange = (event) => {
+        setCep(event.target.value);
+    };
+
+    const buscarEndereco = () => {
+        axios.get(`https://viacep.com.br/ws/${cep}/json/`)
+            .then(response => {
+                setEndereco(response.data);
+                setErro(null);
+                // Preencher os campos restantes
+                preencherCampos(response.data);
+            })
+            .catch(error => {
+                setErro('CEP não encontrado.');
+                setEndereco(null);
+            });
+    };
+
+    const preencherCampos = (endereco) => {
+        document.getElementById('logradouro').value = endereco.logradouro || '';
+        document.getElementById('cidade').value = endereco.localidade || '';
+    };
+
+    const handleCepBlur = () => {
+        if (cep.length === 8) {
+            buscarEndereco();
+        }
+    };
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        // Lógica para enviar o formulário, por exemplo:
+        console.log('Formulário enviado');
+    };
+    //Fim Busca CEP
 
     return (
         <>
@@ -41,8 +78,8 @@ function ResgiterModal() {
                     <Modal.Title>Adicionar dados</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form>
-                        <Form.Group className="mb-3" controlId="formNomeCompleto">
+                    <Form onSubmit={handleSubmit}>
+                        <Form.Group className="mb-3" >
                             <Form.Label>Nome Completo</Form.Label>
                             <Form.Control
                                 type="text"
@@ -53,7 +90,7 @@ function ResgiterModal() {
                                 required
                             />
                         </Form.Group>
-                        <Form.Group className="mb-3" controlId="formCPF">
+                        <Form.Group className="mb-3">
                             <Form.Label>CPF</Form.Label>
                             <Form.Control
                                 type="text"
@@ -63,31 +100,39 @@ function ResgiterModal() {
                                 required
                             />
                         </Form.Group>
-                        <Form.Group className="mb-3" controlId="formEndereco">
-                            <Form.Label>Endereço</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="Digite o Endereço*"
-                                value={endereco}
-                                onChange={(e) => setEndereco(e.target.value)}
-                                required
-                            />
-                            <Form.Label>Numero</Form.Label>
-                            <Form.Control
-                                type="number"
-                                placeholder="Numero*"
-                                value={numendereco}
-                                onChange={(e) => setNumEndereco(e.target.value)}
-                                required
-                            />
-                        </Form.Group>
-                        <Form.Group className="mb-3" controlId="formCEP">
+                        <Form.Group className="mb-3">
                             <Form.Label>CEP</Form.Label>
                             <Form.Control
                                 type="text"
                                 placeholder="Digite o CEP*"
                                 value={cep}
-                                onChange={(e) => setCep(e.target.value)}
+                                onChange={handleCepChange} onBlur={handleCepBlur}
+                                required
+                            />
+                        </Form.Group>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Endereço</Form.Label>
+                            <Form.Control
+                                type="text"
+                                placeholder="Digite o Endereço*"
+                                required
+                                id="logradouro"
+                            />
+                        </Form.Group>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Cidade</Form.Label>
+                            <Form.Control
+                                type="text"
+                                placeholder="Digite sua Cidade*"
+                                required
+                                id="cidade"
+                            />
+                        </Form.Group>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Numero</Form.Label>
+                            <Form.Control
+                                type="number"
+                                placeholder="Numero*"
                                 required
                             />
                         </Form.Group>
